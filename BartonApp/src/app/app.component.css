@@ -1,0 +1,104 @@
+
+/* menuItems is the styling class for the menu tabs */
+.menuItems {
+  border: none;
+  background: none;
+  color: #e5d082;
+  padding: 1% 4%;
+  text-align: center;
+  font-size: 29px;
+  margin: 4px 2px;
+  opacity: 0.80;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  z-index: 1;
+  vertical-align: text-bottom;
+  margin-bottom: 18px;
+}
+
+.menuItems:hover {
+  opacity: 1;
+  z-index: 1;
+}
+
+.menuItems.selected {
+    opacity: 1;
+}
+
+/*messing around with trying to get the line between menu items like mock up*/
+.vl {
+    border-left: 2px solid #e5d082;
+    height: 20px;
+}
+
+/*styling class for background*/
+img.bartonbarrel {
+  min-height: 100%;
+  min-width: 1024;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/*class for logo*/
+img.logo {
+  size: 40%;
+  width: 10%;
+  padding-top: 1%;
+  padding-left: 6%;
+  padding-right: 6%;
+}
+
+/*class for header line that sits between menu tabs and content*/
+hr.headerline {
+  color: #e5d082;
+  margin: 1.5% 4%;
+  border-top: 1px;
+}
+
+/*styling classes for button graphic*/
+.button {
+  display: inline-block;
+  background: none;
+  border-radius: 4px;
+  border: 2px solid #e5d082;
+  color: #e5d082;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 300px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  margin-top: 13%;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
