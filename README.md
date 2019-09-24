@@ -16,3 +16,10 @@ Michael Telahun
 
 
 ![a3](https://user-images.githubusercontent.com/43968309/65200393-9b5a3880-da54-11e9-8a7f-0ddeac72f510.png)
+
+------------------------------------------------------------
+
+cmds
+npm install primeng --save
+
+ng serve --open 
