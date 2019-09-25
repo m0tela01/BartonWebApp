@@ -19,7 +19,10 @@ Michael Telahun
 
 ------------------------------------------------------------
 
-cmds
-npm install primeng --save
+Commands  
+NPM Installs  
+npm install primeng --save  
+npm install --save-dev @angular-devkit/build-angular  
 
+Run App  
 ng serve --open 
