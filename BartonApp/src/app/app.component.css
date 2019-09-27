@@ -75,7 +75,7 @@ hr.headerline {
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
-  margin-top: 13%;
+  margin-top: 6%;
 }
 
 .button span {
@@ -101,4 +101,15 @@ hr.headerline {
 .button:hover span:after {
   opacity: 1;
   right: 0;
+}
+
+/*doesnt work but change class for use*/
+body.ui-table.ui-table-thead.tr.th {
+  color: #e5d082 !important;
+  background-color: black;
+}
+ui-table {
+  display: inline-table;
+  width: 400px;
+  margin-left: 13%;
 }

@@ -1,17 +1,39 @@
 <body>
-  <img class="bartonbarrel" src="../assets/images/BartonBarrels85.jpg" alt="BartonBarrells" >
+  <img
+    class="bartonbarrel"
+    src="../assets/images/BartonBarrels85.jpg"
+    alt="BartonBarrells"
+  />
 
   <div style="text-align:center">
     <button class="menuItems">Home</button>
     <button class="menuItems" style="border-left: 1px solid">Scheduler</button>
-    <img class="logo" src="../assets/images/1792-logo.png" alt="1792-logo" >
+    <img class="logo" src="../assets/images/1792-logo.png" alt="1792-logo" />
     <button class="menuItems">Employees</button>
-    <button class="menuItems"style="border-left: 1px solid">Settings</button>
+    <button class="menuItems" style="border-left: 1px solid">Settings</button>
 
-    <hr class="headerline" color="#E5D082" noshade="noshade">
+    <hr class="headerline" color="#E5D082" noshade="noshade" />
   </div>
 
-  <div style="text-align:center">
-    <button class="button" style="vertical-align:middle"><span>Run Scheduler </span></button>
+  <div style="margin-top: 9%;text-align:center;">
+    <button class="button" style="vertical-align:middle;display: inline-block">
+      <span>Run Scheduler </span>
+    </button>
+    <p-table [value]="scheds">
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="color:#E5D082;background: black" *ngFor="let col of cols">
+            {{ col.header }}
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-sched>
+        <tr>
+          <td style="color:#E5D082;background: gray" *ngFor="let col of cols">
+            {{ sched[col.field] }}
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
   </div>
 </body>
