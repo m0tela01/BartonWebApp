@@ -3,16 +3,20 @@ import { NgModule } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 
+import {AppComponent} from './app.component'
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { Home } from './home';
+import { Scheduler } from './scheduler';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    Home,
+    Scheduler
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    BrowserModule,
     ButtonModule,
     TableModule
   ],
