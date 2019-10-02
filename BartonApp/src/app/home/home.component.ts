@@ -19,21 +19,12 @@ export class HomeComponent implements OnInit {
   scheds: previousSchedule[];
   cols: any[];
 
-  // constructor(public router: Router) {}
+  constructor(public router: Router) {}
 
   ngOnInit() {
     this.getPreviousSchedules();
     this.intializeTable();
   }
-
-  test(event: any) {
-    console.log('are we there yet?')
-  }
-
-  // private onClickTest(event: any): void {
-  //   console.log('teeesttt');
-  //   this.router.navigate(['scheduler']);
-  // }
 
   intializeTable() {
     this.cols = [
