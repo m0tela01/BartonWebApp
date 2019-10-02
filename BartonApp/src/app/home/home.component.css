@@ -116,3 +116,16 @@ ui-table {
   width: 400px;
   margin-left: 13%;
 }
+
+/*styling on home page*/
+#runScheduler {
+    vertical-align:middle;
+    display: inline-block;
+    margin-right: 75px;
+}
+
+#previousSchedules {
+    display: inline-table;
+    width: 450px;
+    margin-left: 125px;
+}

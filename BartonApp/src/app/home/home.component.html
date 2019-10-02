@@ -1,8 +1,8 @@
 <div style="margin-top: 9%;text-align:center;">
-  <button class="button" style="vertical-align:middle;display: inline-block">
+  <button class="button" id="runScheduler">
     <span>Run Scheduler </span>
   </button>
-  <p-table [value]="scheds">
+  <p-table id="previousSchedules" [value]="scheds">
     <ng-template pTemplate="header">
       <tr>
         <th style="color:#E5D082;background: black" *ngFor="let col of cols">
