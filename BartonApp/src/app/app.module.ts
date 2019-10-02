@@ -5,14 +5,15 @@ import { TableModule } from 'primeng/table';
 
 import {AppComponent} from './app.component'
 import { AppRoutingModule } from './app-routing.module';
-import { Home } from './home';
-import { Scheduler } from './scheduler';
+
+import { HomeComponent } from './home/home.component';
+import { SchedulerComponent } from './scheduler/scheduler.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    Home,
-    Scheduler
+    HomeComponent,
+    SchedulerComponent
   ],
   imports: [
     AppRoutingModule,

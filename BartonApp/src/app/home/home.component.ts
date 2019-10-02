@@ -9,11 +9,11 @@ export interface previousSchedule {
 }
 
 @Component({
-  selector: "app-root",
-  templateUrl: "./home.html",
-  styleUrls: ["./home.css"]
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
-export class Home implements OnInit {
+export class HomeComponent implements OnInit {
   title = "BartonApp";
 
   scheds: previousSchedule[];

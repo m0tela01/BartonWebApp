@@ -1,4 +1,3 @@
-
 /* menuItems is the styling class for the menu tabs */
 .menuItems {
   border: none;
@@ -8,7 +7,7 @@
   text-align: center;
   font-size: 29px;
   margin: 4px 2px;
-  opacity: 0.80;
+  opacity: 0.8;
   transition: 0.3s;
   display: inline-block;
   text-decoration: none;
@@ -24,13 +23,17 @@
 }
 
 .menuItems.selected {
+  opacity: 1;
+}
+
+#currentPage {
     opacity: 1;
 }
 
 /*messing around with trying to get the line between menu items like mock up*/
 .vl {
-    border-left: 2px solid #e5d082;
-    height: 20px;
+  border-left: 2px solid #e5d082;
+  height: 20px;
 }
 
 /*styling class for background*/
