@@ -121,11 +121,16 @@ ui-table {
 #runScheduler {
     vertical-align:middle;
     display: inline-block;
-    margin-right: 75px;
 }
 
 #previousSchedules {
     display: inline-table;
-    width: 450px;
-    margin-left: 125px;
+    width: 500px;
+    margin-left: 275px;
+}
+
+body .ui-widget {
+    font-family: "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 20px !important;
+    text-decoration: none;
 }

@@ -35,9 +35,9 @@ export class HomeComponent implements OnInit {
 
   getPreviousSchedules() {
     this.scheds = [
-      {weekday: "kdaja", weekend: "2018"},
-      {weekday: "dahjd", weekend: "2018"},
-      {weekday: "dfewq", weekend: "2018"}
+      {weekday: "9/1/19-9/7/19", weekend: "9/8/19-9/10/19"},
+      {weekday: "9/10/19-9/17/19", weekend: "9/18/19-9/20/19"},
+      {weekday: "9/20/19-9/27/19", weekend: "9/28/19-9/30/19"}
     ];
   }
 }
