@@ -6,24 +6,29 @@ import { TableModule } from 'primeng/table';
 import {AppComponent} from './app.component'
 import { AppRoutingModule } from './app-routing.module';
 
-import { HomeComponent } from './home/home.component';
-import { SchedulerComponent } from './scheduler/scheduler.component';
-import { EmployeesComponent } from './employees/employees.component';
-import { SettingsComponent } from './settings/settings.component';
+import { SchedulerComponent } from './modules/scheduler/scheduler.component';
+import { MenuComponent } from './core/menu/menu.component';
+
+import { HomeModule } from './modules/home/home.module'
+import { EmployeesModule } from './modules/employees/employees.module';
+import { HistoryModule } from './modules/history/history.module'
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    SchedulerComponent,
-    EmployeesComponent,
-    SettingsComponent
-  ],
   imports: [
+    EmployeesModule,
+    HomeModule,
+    HistoryModule,
+
     AppRoutingModule,
+
     BrowserModule,
     ButtonModule,
     TableModule
+  ],
+  declarations: [
+    AppComponent,
+    SchedulerComponent,
+    MenuComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

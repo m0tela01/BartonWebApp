@@ -1,17 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { HomeComponent } from './home/home.component';
-import { SchedulerComponent } from './scheduler/scheduler.component';
-import { EmployeesComponent } from './employees/employees.component';
-import { SettingsComponent } from './settings/settings.component';
+import { HomeComponent } from './modules/home/home.component/home.component';
+import { SchedulerComponent } from './modules/scheduler/scheduler.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'scheduler', component: SchedulerComponent },
-  { path: 'employees', component: EmployeesComponent },
-  { path: 'settings', component: SettingsComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home'}
 ];
 
