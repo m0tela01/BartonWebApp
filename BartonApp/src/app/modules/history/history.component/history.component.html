@@ -1,3 +1,121 @@
-<p style="color: aliceblue">history works!</p>
+<h1 style="color: white;">Table 1</h1>
+<h3 style="color: white;">Shift 1</h3>
+<p-table [value]="schedules" sortField="job" sortMode="single" (onSort)="onSort()">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Job</th>
+            <th>Employee</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+        <tr>
+            <td *ngIf="rowGroupMetadata[rowData.job].index === rowIndex" [attr.rowspan]="rowGroupMetadata[rowData.job].size">
+                {{rowData.job}}
+            </td>
+            <td>{{rowData.employeeName}}</td>
+        </tr>
+    </ng-template>
+</p-table>
+
+<h3 style="color: white;">Shift 2</h3>
+<p-table [value]="schedules" sortField="job" sortMode="single" (onSort)="onSort()">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Job</th>
+            <th>Employee</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+        <tr>
+            <td *ngIf="rowGroupMetadata[rowData.job].index === rowIndex" [attr.rowspan]="rowGroupMetadata[rowData.job].size">
+                {{rowData.job}}
+            </td>
+            <td>{{rowData.employeeName}}</td>
+        </tr>
+    </ng-template>
+</p-table>
+
+<h3 style="color: white;">Shift 3</h3>
+<p-table [value]="schedules" sortField="job" sortMode="single" (onSort)="onSort()">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Job</th>
+            <th>Employee</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+        <tr>
+            <td *ngIf="rowGroupMetadata[rowData.job].index === rowIndex" [attr.rowspan]="rowGroupMetadata[rowData.job].size">
+                {{rowData.job}}
+            </td>
+            <td>{{rowData.employeeName}}</td>
+        </tr>
+    </ng-template>
+</p-table>
+
+
+<hr class="headerline" color="#E5D082" noshade="noshade" />
+
+
+<h1 style="color: white;">Table 2</h1>
+<p-table [value]="schedules" sortField="job" sortMode="single" (onSort)="onSort()">
+    <ng-template pTemplate="header">
+        <tr>
+            <th rowspan="2">Job</th>
+            <th colspan="3">Employee</th>
+        </tr>
+        <tr>
+            <th>Shift 1</th>
+            <th>Shift 2</th>
+            <th>Shift 3</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+        <tr>
+            <td *ngIf="rowGroupMetadata[rowData.job].index === rowIndex" [attr.rowspan]="rowGroupMetadata[rowData.job].size">
+                {{rowData.job}}
+            </td>
+            <td>{{rowData.employeeName}}</td>
+            <td>{{rowData.employeeName}}</td>
+            <td>{{rowData.employeeName}}</td>
+        </tr>
+    </ng-template>
+</p-table>
+
+<hr class="headerline" color="#E5D082" noshade="noshade" />
+
+
+<h1 style="color: white;">Table 3</h1>
+<p-table #dt [columns]="schedules" [value]="schedules" sortField="job" sortMode="single" (onSort)="onSort()">
+    <ng-template pTemplate="caption">
+        <div class="ui-helper-clearfix">
+            <button type="button" pButton label="All Data" (click)="exportExcel()" style="float:left"></button>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th rowspan="2">Job</th>
+            <th colspan="3">Employee</th>
+        </tr>
+        <tr>
+            <th>Shift 1</th>
+            <th>Shift 2</th>
+            <th>Shift 3</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+        <tr>
+            <td *ngIf="rowGroupMetadata[rowData.job].index === rowIndex" [attr.rowspan]="rowGroupMetadata[rowData.job].size">
+                {{rowData.job}}
+            </td>
+            <td>{{rowData.employeeName}}</td>
+            <td>{{rowData.employeeName}}</td>
+            <td>{{rowData.employeeName}}</td>
+        </tr>
+    </ng-template>
+</p-table>
+
+
+
 <button (click)='onTestClick()'>testyTest</button>
 <button (click)='onTestyTest()'>get Url shit</button>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TableModule } from 'primeng/table';
+import {MessageService} from 'primeng/api';
 
 export interface scheduleCreate {
   job: string;
@@ -11,13 +12,17 @@ export interface scheduleCreate {
 @Component({
   selector: 'app-scheduler',
   templateUrl: './scheduler.component.html',
-  styleUrls: ['./scheduler.component.css']
+  styleUrls: ['./scheduler.component.css'],
+  providers: [MessageService]
 })
 export class SchedulerComponent implements OnInit {
   scheds: scheduleCreate[];
   cols: any[];
 
-  constructor() {}
+  
+  clonedScheds: { [s: string]: scheduleCreate; } = {};
+
+  constructor(private messageService: MessageService) {}
 
   ngOnInit() {
     this.getPreviousSchedules();
@@ -43,4 +48,18 @@ export class SchedulerComponent implements OnInit {
       { job: 'Money Mikes', s1: 8, s2: 4, s3: 8 }
     ];
   }
+
+  onRowEditInit(car: scheduleCreate) {
+    this.clonedScheds[car.job] = {...car};
+}
+
+onRowEditSave(car: scheduleCreate) {
+        delete this.clonedScheds[car.job];
+        this.messageService.add({severity:'success', summary: 'Success', detail:'Car is updated'});
+}
+
+onRowEditCancel(car: scheduleCreate, index: number) {
+    this.scheds[index] = this.clonedScheds[car.job];
+    delete this.clonedScheds[car.job];
+}
 }

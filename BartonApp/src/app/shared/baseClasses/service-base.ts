@@ -13,16 +13,23 @@ export class ServiceBase {
         this._http = http;
         this.apiUrl = environment.Url;
 
-        if (!environment.production) {
-            this.headers = new HttpHeaders(
-                {'Access-Control-Allow-Origin': ['http://localhost:4200']}
-            );
-            this.headers = this.headers.set('Access-Control-Allow-Origin', 'http://localhost:4200');
-            this.headers = this.headers.set('Access-Control-Allow-Credentials', 'true');
-            this.headers.get('');
-        }
+        this.headers = new HttpHeaders(
+            {'Access-Control-Allow-Origin': ['https://localhost:44392']}
+        );
+        this.headers = this.headers.set('Access-Control-Allow-Origin', 'https://localhost:44392');
+        this.headers = this.headers.set('Access-Control-Allow-Credentials', 'true');
+        this.headers.get('');
     }
-
+/*
+    getAllEmployees() {
+        this.httpService.get('https://localhost:44392/api/BartonData/GetEmployeeData').subscribe(
+          data => {
+              console.log(data);
+              this.employees = data as Array<EmployeeObject>;
+              console.log(this.employees[0].departmentName);
+            });
+    }
+*/
     public post<T>(url: string, body: T): Observable<any> {
         return this._http.post(this.apiUrl + url, body, {
             headers: this.headers,

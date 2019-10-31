@@ -6,15 +6,15 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class SchedulerService extends ServiceBase {
+export class EmployeeService extends ServiceBase {
   
   constructor(private _httpClient: HttpClient) {
     super(_httpClient);
   }
   
   //put api calls here 
-  getScheduleByDate(date: number): Observable<any> {
+  getEmployeeData(date: number): Observable<any> {
     //TODO: Mike here is the api call
-    return this.get('/api/BartonData/GetScheduleByDate');
+    return this.get('/api/BartonData/GetEmployeeData');
   }
 }

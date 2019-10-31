@@ -1,13 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { TableModule } from 'primeng/table';
 
-export interface Employee {
-  id: number;
-  name: string;
-  role: string;
-  shiftPreference: number;
-}
+import { Employee } from '../../../core/models/employee'
+import { HttpClient } from '@angular/common/http'
+
+import { EmployeeService } from 'src/app/core/services/employee.service';
 
 @Component({
   selector: 'app-employees',
@@ -18,7 +16,7 @@ export class EmployeesComponent implements OnInit {
   cols: any[];
   employees: any[];
 
-  constructor(public router: Router) {}
+  constructor(public router: Router, private employeeService: EmployeeService) {}
 
   ngOnInit() {
     this.getAllEmployees();
@@ -35,6 +33,16 @@ export class EmployeesComponent implements OnInit {
       { field: 'shiftPreference', header: 'Shift Pref.' }
     ];
   }
+
+/* what money mike has
+  getAllEmployees() {
+    this.httpService.get('https://localhost:44392/api/BartonData/GetEmployeeData').subscribe(
+      data => {
+          console.log(data);
+          this.employees = data as Array<EmployeeObject>;
+          console.log(this.employees[0].departmentName);
+        });
+  } */
 
   getAllEmployees() {
     this.employees = [

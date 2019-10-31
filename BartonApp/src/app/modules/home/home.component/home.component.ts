@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { Router, RouterLink } from '@angular/router';
+import { SchedulerService } from 'src/app/core/services/scheduler.service';
 
 export interface previousSchedule {
   weekday;
@@ -19,16 +20,19 @@ export class HomeComponent implements OnInit {
   scheds: previousSchedule[];
   cols: any[];
 
-  constructor(public router: Router) {}
+  constructor(public router: Router, public schedulerService: SchedulerService) {}
 
   ngOnInit() {
     this.getPreviousSchedules();
     this.intializeTable();
-
-    console.log('home has been loaded');
   }
 
   onRunScheduler() {
+    this.router.navigate(['/scheduler']);
+  }
+
+  onPreviousSchedule() {
+    //the second part is a variable that can be passed. We can pass a date or ID
     this.router.navigate(['/history', 12]);
   }
 
