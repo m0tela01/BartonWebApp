@@ -1,12 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { TableModule } from 'primeng/table';
-import {MessageService} from 'primeng/api';
+import { Router, RouterLink } from '@angular/router';
+import { registerLocaleData } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { ScheduleObject } from '../../core/models/ScheduleObject';
+import { TemplateObject } from '../../core/models/TemplateObject';
+import { MessageService } from 'primeng/api';
+import { EmployeeObject } from '../../core/models/EmployeeObject';
 
-export interface scheduleCreate {
-  job: string;
-  s1: number;
-  s2: number;
-  s3: number;
+export class EmployeeNote {
+  employeeId: number;
+  reason: string;
+  dateRanges: Date[];
+  note: string;
 }
 
 @Component({
@@ -15,51 +21,75 @@ export interface scheduleCreate {
   styleUrls: ['./scheduler.component.css'],
   providers: [MessageService]
 })
+
 export class SchedulerComponent implements OnInit {
-  scheds: scheduleCreate[];
-  cols: any[];
+  colsTemplate: any[];
+  templates: Array<TemplateObject>;
+  clonedTemplates: { [s: string]: TemplateObject; } = {};
 
-  
-  clonedScheds: { [s: string]: scheduleCreate; } = {};
+  //for restrictions footer and dialog
+  employee: EmployeeNote = new EmployeeNote();
+  restrictions: EmployeeNote[] = [];
+  displayDialog: boolean = false;
 
-  constructor(private messageService: MessageService) {}
+  constructor(public router: Router, private httpService: HttpClient, private messageService: MessageService) { }
 
   ngOnInit() {
-    this.getPreviousSchedules();
-    this.intializeTable();
+    this.getCurrentTemplate();
+    this.initalizeTemplateTable();
 
     console.log('scheduler has been loaded');
   }
 
-  intializeTable() {
-    this.cols = [
-      { field: 'job', header: 'Job' },
-      { field: 's1', header: 'Shift 1' },
-      { field: 's2', header: 'Shift 2' },
-      { field: 's3', header: 'Shift 3' }
+  initalizeTemplateTable() {
+    this.colsTemplate = [
+      { field: 'jobName', header: 'Rated Job' },
+      { field: 'departmentName', header: 'Department' },
+      { field: 'shift1', header: 'Shift 1 Count' },
+      { field: 'shift2', header: 'Shift 2 Count' },
+      { field: 'shift3', header: 'Shift 3 Count' }
     ];
   }
 
-  getPreviousSchedules() {
-    this.scheds = [
-      { job: 'Filler', s1: 8, s2: 7, s3: 6 },
-      { job: 'Case Feeder', s1: 9, s2: 7, s3: 7 },
-      { job: 'Testy Test', s1: 6, s2: 1, s3: 9 },
-      { job: 'Money Mikes', s1: 8, s2: 4, s3: 8 }
-    ];
+  getCurrentTemplate() {
+    this.httpService.get('https://localhost:44392/api/BartonData/GetCurrentTemplate').subscribe(
+      data => {
+        this.templates = data as Array<TemplateObject>;
+        console.log(this.templates[0].departmentName);    //debugging - sanity check: remove
+      });
   }
 
-  onRowEditInit(car: scheduleCreate) {
-    this.clonedScheds[car.job] = {...car};
-}
+  onRowEditInit(template: TemplateObject) {
+    this.clonedTemplates[template.jobName] = { ...template };
+  }
 
-onRowEditSave(car: scheduleCreate) {
-        delete this.clonedScheds[car.job];
-        this.messageService.add({severity:'success', summary: 'Success', detail:'Car is updated'});
-}
+  onRowEditSave(template: TemplateObject) {
+    delete this.clonedTemplates[template.jobName];
+    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Car is updated' });
+  }
 
-onRowEditCancel(car: scheduleCreate, index: number) {
-    this.scheds[index] = this.clonedScheds[car.job];
-    delete this.clonedScheds[car.job];
-}
+  onRowEditCancel(template: TemplateObject, index: number) {
+    this.templates[index] = this.clonedTemplates[template.jobName];
+    delete this.clonedTemplates[template.jobName];
+  }
+
+  showDialogToAdd() {
+    this.employee = new EmployeeNote();
+    this.displayDialog = true;
+  }
+
+  save() {
+    if (this.employee) {
+      this.restrictions.push(this.employee);
+      this.employee = null;
+      this.displayDialog = false;
+    } else {
+      this.messageService.add({ severity: 'error', summary: 'Failed', detail: 'Please fill out the the dialog' })
+    }
+  }
+
+  exitDialog() {
+    this.employee = null;
+    this.displayDialog = false;
+  }
 }
