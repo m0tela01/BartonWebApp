@@ -22,8 +22,9 @@ Michael Telahun
 Commands  
 NPM Installs  
 npm install primeng --save  
+npm install primeicons --save  
 npm install --save-dev @angular-devkit/build-angular  
-npm install xlsx
+npm install xlsx  
 npm install file-saver
 
 Run App  
